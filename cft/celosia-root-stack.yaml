@@ -822,20 +822,20 @@ Resources:
         DatapointsToAlarmLambdaConcurrentExecutions: !Ref DatapointsToAlarmLambdaConcurrentExecutions
         EvaluationPeriodsForLambdaConcurrentExecutions: !Ref EvaluationPeriodsForLambdaConcurrentExecutions
         AlarmComparisonOperatorLambdaConcurrentExecutions: !Ref AlarmComparisonOperatorLambdaConcurrentExecutions
-      TimeoutInMinutes: 5
+      TimeoutInMinutes: 15
 Outputs:
   CelosiaSNSTopicArn:
     Description: Celosia SNS Topic Arn
     Value: !GetAtt CelosiaSNSTopic.Outputs.SNSTopicArn
   CelosiaSNSSubscriptionArn:
     Description: Celosia SNS Topc Subscription Arn
-    Value: !GetAtt CelosiaSQSQueue.Outputs.SQSQueueArn
-  CelosiaSNSSubscriptionURL:
+    Value: !GetAtt CelosiaSNSTopic.Outputs.SNSSubscriptionArn
+  CelosiaSQSQueueURL:
     Description: Celosia SNS Topc Subscription Arn
     Value: !GetAtt CelosiaSQSQueue.Outputs.SQSQueueURL
   CelosiaSSQSArn:
     Description: Celosia SQS Queue Arn
-    Value: !GetAtt CelosiaSNSTopic.Outputs.SNSSubscriptionArn
+    Value: !GetAtt CelosiaSQSQueue.Outputs.SQSQueueArn
   CelosiaDynamoDBTableArn: 
     Description: Celosia DynamoDB Table Arn
     Value: !GetAtt CelosiaDynamoDBTable.Outputs.DynamoDBTableArn
